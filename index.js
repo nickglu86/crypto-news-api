@@ -2,7 +2,6 @@ const PORT = process.env.PORT || 8000;
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
-const { each } = require('cheerio/lib/api/traversing');
 
 const app = express();
 const { resources } = require('./resources');
