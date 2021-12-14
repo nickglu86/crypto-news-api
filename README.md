@@ -1,6 +1,7 @@
-# crypto-news-api
+## RESTfull Stateless API demo 
+Uses get request to target news domains and exclude from it the news items.
+Retrieves JSON with Array of news items  each having title description, image, link, data and author.
 
-## In Dev
 
 ### API EndPoints
 Cointelegraph - https://crypto-news-apiii.herokuapp.com/news/cointelegraph
@@ -8,6 +9,8 @@ Cointelegraph - https://crypto-news-apiii.herokuapp.com/news/cointelegraph
 CoinDesk - https://crypto-news-apiii.herokuapp.com/news/coindesk
 
 Theblockcrypto - https://crypto-news-apiii.herokuapp.com/news/theblockcrypto
+
+YahooFinance - In Dev
 
 ## API Documentation 
 

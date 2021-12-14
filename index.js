@@ -1,9 +1,9 @@
 const PORT = process.env.PORT || 8000;
-const express = require('express');
+const app = require('express')();
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-const app = express();
+
 const { resources } = require('./resources');
 
 const getNewsItems = (html, selectors) => {
@@ -11,15 +11,16 @@ const getNewsItems = (html, selectors) => {
     const newsItems = [];
 
     $(selectors.item, html).each(function(){
-                            
+                
         const title = selectors.title($(this));
+        console.log(title)     
         const desc = selectors.desc($(this));
         const url = selectors.url($(this));
         const image = selectors.image($(this));
         const date = selectors.date($(this));
         const author = selectors.author($(this));
 
-        if(title){
+        if(true){
             newsItems.push ({
                 title,
                 desc,
@@ -51,7 +52,9 @@ app.get('/news/:rsrcName', async (req, res) => {
             .then( 
                 response => {
                     const html = response.data;
+                    console.log(html)
                     const newsItems = getNewsItems(html, selectors)
+                    res.header('Access-Control-Allow-Credentials', '*')
                     res.json(newsItems);
                 })
             .catch( err => console.log(err))

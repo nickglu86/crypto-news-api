@@ -10,7 +10,7 @@ const resources = [
                 url   : url => url.find('guid').text(),
                 image : image => image.find('enclosure').attr('url'),
                 date  : date => date.find('pubDate').text().replace(' +0000', ''),
-                author: author => null
+                author: author => author.find( ":contains('Cointelegraph By')").text()
             }
         },
         {   
@@ -36,6 +36,19 @@ const resources = [
                 url   : url => url.find('a.feedCard-readButton').attr('href'),
                 image : image => image.find('.feedCard-image img').attr('src'),
                 date  : date => date.find('.font-meta').text(),
+                author: author => null
+            }
+        },
+        {   
+            name: 'yahoofinance',
+            url: 'https://finance.yahoo.com/topic/crypto/',
+            selectors : {
+                item  : '.js-stream-content',
+                title : title => title.find('h3').text(),
+                desc  : desc => desc.find('p').text(),
+                url   : url  => url.find('a').attr('href'),
+                image : image => image.find('img').attr('src'),
+                date  : date => null,
                 author: author => null
             }
         }
