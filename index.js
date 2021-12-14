@@ -52,6 +52,7 @@ app.get('/news/:rsrcName', async (req, res) => {
                 response => {
                     const html = response.data;
                     const newsItems = getNewsItems(html, selectors)
+                    res.header("Access-Control-Allow-Origin", "*");
                     res.json(newsItems);
                 })
             .catch( err => console.log(err))
