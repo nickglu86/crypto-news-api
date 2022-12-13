@@ -2,41 +2,42 @@
 const resources = [
         { 
             name: 'cointelegraph',
-            url: 'https://cointelegraph.com/rss',
+            url: 'https://cointelegraph.com/',
             selectors : {
-                item  : 'item',
-                title : title => title.find('title').text().split('<![CDATA[').pop().split(']]>')[0],
-                desc  : desc => desc.find('description p ').text(),
-                url   : url => url.find('guid').text(),
-                image : image => image.find('enclosure').attr('url'),
-                date  : date => date.find('pubDate').text().replace(' +0000', ''),
-                author: author => author.find( ":contains('Cointelegraph By')").text()
+                item  : '.main-page__posts article.post-card__article',
+                title : title => title.find('.post-card__header span.post-card__title').text(),
+                desc  : desc => desc.find('.post-card__text-wrp p.post-card__text').text(),
+                url   : url => url.find('.post-card__header a.post-card__title-link').attr('href'),
+                image : image => "",
+                date  : date => date.find('.post-card__footer time.post-card__date').text(),
+                author: author => author.find(".post-card__footer a.post-card__author-link").text()
             }
         },
-        {   
-            name: 'coindesk',
-            url: 'https://www.coindesk.com/markets/',
-            selectors : {
-                item  : '.article-card',
-                title : title => title.find('.headline').text(),
-                desc  : desc => desc.find('span.content-text').text(),
-                url   : url => url.find('.img-block a').attr('href'),
-                image : image => image.find('.img-block img').attr('src'),
-                date  : date => date.find('.timing-data span').text(),
-                author: author => author.find('.ac-author span').text()
-            }
-        },
+        // {   
+        //     name: 'coindesk',
+        //     url: 'https://www.coindesk.com/livewire/',
+        //     selectors : {
+        //         item  : '.articles-wrapper .article-card',
+        //         title : title => title.find('.articleTextSection a.card-title').text(),
+        //         desc  : desc => desc.find('.articleTextSection span.content-text').text(),
+        //         url   : url => url.find('.img-block a').attr('href'),
+        //         image : image => image.find('.img-block picture').attr('srcset'),
+        //         date  : date => '',
+        //         author: author => ''
+        //     }
+        // },
         {   
             name: 'theblockcrypto',
-            url: 'https://www.theblockcrypto.com',
+            url: 'https://www.theblock.co/latest',
             selectors : {
-                item  : '.storyFeed article',
-                title : title => title.find('.font-headline').text(),
+                item  : '.collectionLatest article.articleCard',
+                title : title => title.find('.headline h2 span').text(),
                 desc  : desc => desc.find('span.content-text').text(),
-                url   : url => url.find('a.feedCard-readButton').attr('href'),
-                image : image => image.find('.feedCard-image img').attr('src'),
-                date  : date => date.find('.font-meta').text(),
-                author: author => null
+                url   : url => url.find('.headline a').attr('href'),
+                image : image => image.find('.featureImage img').attr('src'),
+                date  : date => "",
+                author: author =>  "",
+                category: category => category.find('.meta .category a').text()
             }
         },
         {   
@@ -48,8 +49,8 @@ const resources = [
                 desc  : desc => desc.find('p').text(),
                 url   : url  => url.find('a').attr('href'),
                 image : image => image.find('img').attr('src'),
-                date  : date => null,
-                author: author => null
+                date  : date => "",
+                author: author => ""
             }
         }
     

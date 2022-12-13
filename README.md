@@ -4,14 +4,11 @@ Retrieves JSON with Array of news items  each having title description, image, l
 
 
 ### API EndPoints
-Cointelegraph - https://crypto-news-apiii.herokuapp.com/news/cointelegraph
+Cointelegraph - https://crypto-news-api.b4a.app/news/cointelegraph
 
-CoinDesk - https://crypto-news-apiii.herokuapp.com/news/coindesk
+Theblockcrypto - https://crypto-news-api.b4a.app/news/theblockcrypto
 
-Theblockcrypto - https://crypto-news-apiii.herokuapp.com/news/theblockcrypto
+YahooFinance - https://crypto-news-api.b4a.app/news/yahoofinance
 
-YahooFinance - In Dev
-
-## API Documentation 
-
-https://rapidapi.com/enayfls@gmail.com/api/crypto-news14
+ 
+ 
