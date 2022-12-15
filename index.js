@@ -1,11 +1,12 @@
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8001;
 const app = require('express')();
 const axios = require('axios');
 const cheerio = require('cheerio');
 
 
-const { resources } = require('./resources');
+const { resources, root } = require('./data');
 
+ 
 const getNewsItems = (html, selectors) => {
     const $ = cheerio.load(html);
     const newsItems = [];
@@ -35,11 +36,11 @@ const getNewsItems = (html, selectors) => {
       return newsItems;
 } 
 app.get('/', (req, res) => {
-    res.json('Welcome to my Crypto News API');
+    res.json(root);
 });
 
 app.get('/news', (req, res) => {
-    // TO DO : Retvie Crypto News From all resources
+    res.json(root.endpoints);
 })
 
 app.get('/news/:rsrcName', async (req, res) => {
