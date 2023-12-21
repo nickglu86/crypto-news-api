@@ -5,7 +5,7 @@ const API_CATEGORY = 'news/'
 const THE_BLOCK_CRYPTO = 'theblockcrypto'
 const THE_BLOCK_CRYPTO_DOMAIN = 'https://www.theblock.co'
 const YAHOO_FINANCE = 'yahoofinance'
-const YAHOO_FINANCE_DOMAIN = 'https://finance.yahoo.com'
+const YAHOO_FINANCE_DOMAIN = 'https://finance.yahoo.com/topic/crypto/'
 const COIN_TELEGRAPH = 'cointelegraph'
 const COIN_TELEGRAPH_DOMAIN = 'https://cointelegraph.com'
 
@@ -24,26 +24,26 @@ const resources = [
             name: THE_BLOCK_CRYPTO,
             url: THE_BLOCK_CRYPTO_DOMAIN +'/latest',
             selectors : {
-                item  : '.collectionLatest article.articleCard',
+                item  : 'section.collection .articles .articleCard',
                 title : title => title.find('.headline h2 span').text(),
-                desc  : desc => desc.find('span.content-text').text(),
-                url   : url => THE_BLOCK_CRYPTO_DOMAIN + url.find('.headline a').attr('href'),
-                image : image => image.find('.featureImage img').attr('src'),
-                date  : date => "",
+                desc  : desc => "",
+                url   : url => THE_BLOCK_CRYPTO_DOMAIN + url.find('.headline a.appLink').attr('href'),
+                image : image => image.find('.imageContainer img').attr('src'),
+                date  : date => date.find('meta .pubDate').text(),
                 author: author =>  "",
                 category: category => category.find('.meta .category a').text()
             }
         },
         {   
             name: YAHOO_FINANCE,
-            url: YAHOO_FINANCE_DOMAIN +'/topic/crypto/',
+            url: YAHOO_FINANCE_DOMAIN,
             selectors : {
-                item  : '.js-stream-content',
+                item  : '#Main li.js-stream-content',
                 title : title => title.find('h3').text(),
                 desc  : desc => desc.find('p').text(),
                 url   : url  => YAHOO_FINANCE_DOMAIN + url.find('a').attr('href'),
                 image : image => image.find('img').attr('src'),
-                date  : date => "",
+                date  : date =>  "",
                 author: author => ""
             }
         },
@@ -51,13 +51,13 @@ const resources = [
             name: COIN_TELEGRAPH,
             url: COIN_TELEGRAPH_DOMAIN,
             selectors : {
-                item  : '.main-page__posts article.post-card__article',
-                title : title => title.find('.post-card__header span.post-card__title').text(),
-                desc  : desc => desc.find('.post-card__text-wrp p.post-card__text').text(),
-                url   : url => COIN_TELEGRAPH_DOMAIN + url.find('.post-card__header a.post-card__title-link').attr('href'),
-                image : image => image.find('.lazy-image ').attr('src'),
-                date  : date => date.find('.post-card__footer time.post-card__date').text(),
-                author: author => author.find(".post-card__footer a.post-card__author-link").text()
+                item  : '.main-page article.post-card__article',
+                title : title => title.find('span.post-card__title').text(),
+                desc  : desc => desc.find('p.post-card__text').text(),
+                url   : url => COIN_TELEGRAPH_DOMAIN + url.find('a.post-card__figure-link').attr('href'),
+                image : image => image.find('img.lazy-image__img').attr('src'),
+                date  : date => date.find('time.text-uiSWeak').text(),
+                author: author => author.find(".post-card__author-link").text()
             }
         }    
     ]
