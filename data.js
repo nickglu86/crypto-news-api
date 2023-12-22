@@ -9,6 +9,10 @@ const YAHOO_FINANCE_DOMAIN = 'https://finance.yahoo.com/topic/crypto/'
 const COIN_TELEGRAPH = 'cointelegraph'
 const COIN_TELEGRAPH_DOMAIN = 'https://cointelegraph.com'
 
+const CRYPTOPOLITAN = 'cryptopolitan'
+const CRYPTOPOLITAN_DOMAIN = 'https://www.cryptopolitan.com/news/'
+
+
 const root = {
     title: ROOT_TITLE,
     apiUrl: API_URL,
@@ -16,7 +20,8 @@ const root = {
     endpoints: {
         theblockcrypto : API_CATEGORY + THE_BLOCK_CRYPTO,
         yahoofinance :  API_CATEGORY + YAHOO_FINANCE,
-        cointelegraph : API_CATEGORY + COIN_TELEGRAPH
+        cointelegraph : API_CATEGORY + COIN_TELEGRAPH,
+        cryptopolitan : API_CATEGORY + CRYPTOPOLITAN
     }
 }
 const resources = [
@@ -58,6 +63,19 @@ const resources = [
                 image : image => image.find('img.lazy-image__img').attr('src'),
                 date  : date => date.find('time.text-uiSWeak').text(),
                 author: author => author.find(".post-card__author-link").text()
+            }
+        },
+        { 
+            name: CRYPTOPOLITAN,
+            url: CRYPTOPOLITAN_DOMAIN,
+            selectors : {
+                item  : '.elementor-widget-container .elementor-loop-container.elementor-grid [data-elementor-type=loop-item]',
+                title : title => title.find('h3.elementor-heading-title a').text(),
+                desc  : desc => "",
+                url   : url => url.find('h3.elementor-heading-title a').attr('href'),
+                image : image => image.find('[data-widget_type=theme-post-featured-image.default] a img').attr('src'),
+                date  : date => date.find('time.text-uiSWeak').text(),
+                author: author => ""
             }
         }    
     ]

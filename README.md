@@ -10,5 +10,5 @@ Theblockcrypto - https://crypto-news-api.b4a.app/news/theblockcrypto
 
 YahooFinance - https://crypto-news-api.b4a.app/news/yahoofinance
 
- 
+YahooFinance - https://crypto-news-api.b4a.app/news/yahoofinance
  
