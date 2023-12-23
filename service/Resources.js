@@ -8,7 +8,6 @@ const YAHOO_FINANCE = 'yahoofinance'
 const YAHOO_FINANCE_DOMAIN = 'https://finance.yahoo.com/topic/crypto/'
 const COIN_TELEGRAPH = 'cointelegraph'
 const COIN_TELEGRAPH_DOMAIN = 'https://cointelegraph.com'
-
 const CRYPTOPOLITAN = 'cryptopolitan'
 const CRYPTOPOLITAN_DOMAIN = 'https://www.cryptopolitan.com/news/'
 
@@ -74,7 +73,7 @@ const resources = [
                 desc  : desc => "",
                 url   : url => url.find('h3.elementor-heading-title a').attr('href'),
                 image : image => image.find('[data-widget_type=theme-post-featured-image.default] a img').attr('src'),
-                date  : date => date.find('time.text-uiSWeak').text(),
+                date  : date => "",
                 author: author => ""
             }
         }    
