@@ -1,4 +1,4 @@
-const port = process.env.PORT || 8001;
+const port = process.env.PORT || 3000;
 const app = require('express')();
 const { resources, root } = require('./service/Resources');
  
@@ -11,4 +11,4 @@ app.use('/news',newsResources)
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
-});
+});             
