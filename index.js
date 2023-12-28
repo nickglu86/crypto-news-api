@@ -2,7 +2,7 @@ const port = process.env.PORT || 3000;
 const app = require('express')();
 const { resources, root } = require('./service/Resources');
  
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
     res.json(root);
 });
 
